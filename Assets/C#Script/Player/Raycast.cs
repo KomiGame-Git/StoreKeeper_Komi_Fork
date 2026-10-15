@@ -61,7 +61,7 @@ public class Raycast : MonoBehaviour
                 else if (hit.transform.tag == "stocker" && Input.GetMouseButton(0) && !iscoroutine)//ストッカーに入れる
                 {
                     iscoroutine = true;
-                    Debug.Log("coroutine");
+                    //Debug.Log("coroutine");
                     StartCoroutine(itemsupply(hit.transform.gameObject));
                 }
         }
@@ -71,11 +71,11 @@ public class Raycast : MonoBehaviour
         Stocker stocker = hit.transform.GetComponent<Stocker>();
         ItemBlock itemBlock = playerEnventory.item.GetComponent<ItemBlock>();
         //Debug.Log("coroutine");
-        Debug.Log(!Input.GetMouseButton(0));
-        Debug.Log(itemBlock.stockitem <= 0);
+        //Debug.Log(!Input.GetMouseButton(0));
+        //Debug.Log(itemBlock.stockitem <= 0);
         for (; itemBlock.stockitem >= 1 && Input.GetMouseButton(0); itemBlock.stockitem--)
         {
-            Debug.Log("for");
+            //Debug.Log("for");
             yield return null;
             stocker.stockitem++;
         }

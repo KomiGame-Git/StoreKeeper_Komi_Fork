@@ -7,6 +7,7 @@ public class Blockholder : MonoBehaviour
     public GameObject holdpoint = null;
     public GameObject holditem = null;
     public float scale;
+    public ItemBlock itemBlock;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +19,14 @@ public class Blockholder : MonoBehaviour
     {
         if (holditem != null)
         {
-            ItemBlock itemBlock =holditem.transform.GetComponent<ItemBlock>();
-            holditem.transform.localScale=itemBlock.startscale*scale;
+            itemBlock = holditem.GetComponent<ItemBlock>();
+            holditem.transform.localScale = itemBlock.startscale * scale;
             holditem.transform.position = holdpoint.transform.position;
             holditem.transform.rotation = holdpoint.transform.rotation;
+        }
+        if (holditem == null)
+        {
+            itemBlock = null;
         }
     }
 }

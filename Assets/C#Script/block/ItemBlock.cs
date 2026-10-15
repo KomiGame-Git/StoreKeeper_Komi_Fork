@@ -30,14 +30,16 @@ public class ItemBlock : MonoBehaviour
 
             renderer.material.color = Color.blue;
         }
-        if (type == ItemType.nofood)
-        {
-            renderer.material.color = Color.red;
-        }
-        if (type == ItemType.none)
-        {
-            renderer.material.color = Color.white;
-        }
+        else
+            if (type == ItemType.nofood)
+            {
+                renderer.material.color = Color.red;
+            }
+            else
+                if (type == ItemType.none)
+                {
+                    renderer.material.color = Color.white;
+                }
         if (stockitem == 0)
         {
             text.text = "空";
