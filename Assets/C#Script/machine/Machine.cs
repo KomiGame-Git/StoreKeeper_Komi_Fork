@@ -11,6 +11,9 @@ public class Machine : MonoBehaviour
     public Blockholder blockholder;
     public bool iscoroutine = false;
     public ItemType type;
+    public bool nowmoveing = false;
+    public GameObject lookpoint;
+    public Gridmanager gridmanager;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,11 @@ public class Machine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (stocker.stockitem > 0 && !iscoroutine)
+        if (nowmoveing)
+        {
+            transform.position=gridmanager.gridposition(lookpoint.transform.position);
+        }
+        else if (stocker.stockitem > 0 && !iscoroutine)
         {
             iscoroutine = true;
             StartCoroutine(makeitem());
@@ -30,7 +37,7 @@ public class Machine : MonoBehaviour
     }
     IEnumerator makeitem()
     {
-        
+
         for (; stocker.stockitem > 0; stocker.stockitem--)
         {
             yield return new WaitForSeconds(1f);
@@ -40,8 +47,8 @@ public class Machine : MonoBehaviour
                 blockholder.itemBlock = blockholder.holditem.transform.GetComponent<ItemBlock>();
                 blockholder.itemBlock.type = type;
                 blockholder.itemBlock.stockitem = 0;
-                blockholder.itemBlock.isholding=true;
-                blockholder.itemBlock.holdingobject=output;
+                blockholder.itemBlock.isholding = true;
+                blockholder.itemBlock.holdingobject = output;
                 //blockholder.holdpoint=output.
             }
             blockholder.itemBlock.stockitem++;
@@ -49,4 +56,8 @@ public class Machine : MonoBehaviour
         }
         iscoroutine = false;
     }
+    /*public void setting()
+    {
+        nowmoveing=false;
+    }*/
 }
