@@ -316,48 +316,18 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 125c17cbde9072d42a233334902898b9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5880770378254596084}
+      addedObject: {fileID: 6875047221002966298}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 125c17cbde9072d42a233334902898b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3497395211304488891}
-    - targetCorrespondingSourceObject: {fileID: 8064388472386010465, guid: 125c17cbde9072d42a233334902898b9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2854793298286885219}
   m_SourcePrefab: {fileID: 100100000, guid: 125c17cbde9072d42a233334902898b9, type: 3}
---- !u!1 &1725787926576323936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8064388472386010465, guid: 125c17cbde9072d42a233334902898b9, type: 3}
-  m_PrefabInstance: {fileID: 8654032200514134017}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2854793298286885219
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725787926576323936}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6282767059988387491, guid: 125c17cbde9072d42a233334902898b9, type: 3}
 --- !u!1 &8419521003866217808 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 125c17cbde9072d42a233334902898b9, type: 3}
   m_PrefabInstance: {fileID: 8654032200514134017}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &5880770378254596084
-BoxCollider:
+--- !u!64 &6875047221002966298
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -373,10 +343,11 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 250, y: 125, z: 140}
-  m_Center: {x: -25, y: 13, z: 70}
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6282767059988387491, guid: 125c17cbde9072d42a233334902898b9, type: 3}
 --- !u!114 &3497395211304488891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,6 +370,7 @@ MonoBehaviour:
   nowmoveing: 0
   lookpoint: {fileID: 0}
   gridmanager: {fileID: 0}
+  colliderlist: []
 --- !u!4 &9192960722266654698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c17cbde9072d42a233334902898b9, type: 3}

@@ -14,12 +14,18 @@ public class Machine : MonoBehaviour
     public bool nowmoveing = false;
     public GameObject lookpoint;
     public Gridmanager gridmanager;
+    public List<Collider> colliderlist;
 
     // Start is called before the first frame update
     void Start()
     {
+        colliderlist.Clear();
         stocker = input.GetComponent<Stocker>();
         blockholder = output.GetComponent<Blockholder>();
+        colliderlist.Add(this.gameObject.transform.GetComponent<Collider>());
+        colliderlist.Add(input.transform.GetComponent<Collider>());
+        colliderlist.Add(output.transform.GetComponent<Collider>());
+        Debug.Log(colliderlist.Count);
     }
 
     // Update is called once per frame
@@ -27,7 +33,7 @@ public class Machine : MonoBehaviour
     {
         if (nowmoveing)
         {
-            transform.position=gridmanager.gridposition(lookpoint.transform.position);
+            transform.position = gridmanager.gridposition(lookpoint.transform.position);
         }
         else if (stocker.stockitem > 0 && !iscoroutine)
         {
@@ -60,4 +66,13 @@ public class Machine : MonoBehaviour
     {
         nowmoveing=false;
     }*/
+    public void colliderchenge(bool chenge)
+    {
+        Debug.Log(colliderlist.Count);
+        for (int i = 0; i < colliderlist.Count; i++)
+        {
+            Debug.Log(i);
+            colliderlist[i].enabled = chenge;
+        }
+    }
 }

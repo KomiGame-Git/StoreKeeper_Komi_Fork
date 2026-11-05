@@ -13,8 +13,9 @@ public class Raycast : MonoBehaviour
     public GameObject lookpoint;
     public Gridmanager gridmanager;
     public bool nowmoveing;
-    private bool leftcheckcoroutine=false;
+    private bool leftcheckcoroutine = false;
     public GameObject movemachine;
+    public Machine machinescript;
     void Start()
     {
 
@@ -75,15 +76,20 @@ public class Raycast : MonoBehaviour
                 iscoroutine = true;
                 StartCoroutine(itemsupply(hit.transform.gameObject));
             }
-            else if (hit.transform.tag == "Machine" && Input.GetMouseButton(0) && Input.GetMouseButton(1) && !nowmoveing)
+            else if (hit.transform.tag == "Machine" && Input.GetMouseButton(2) && !nowmoveing)
             {
                 nowmoveing = true;
-                machineobject = hit.transform.parent.gameObject;
+                machineobject = hit.transform.gameObject;
                 movemachine = Instantiate(machineobject);
-                Machine machinescript = movemachine.transform.GetComponent<Machine>();
+                machinescript = movemachine.transform.GetComponent<Machine>();
                 machinescript.nowmoveing = true;
                 machinescript.lookpoint = lookpoint;
                 machinescript.gridmanager = gridmanager;
+                /*Collider machinecollider = movemachine.gameObject.GetComponent<Collider>();
+                Collider inputcollider=machinescript.input.gameObject.GetComponent<Collider>();
+                Collider outputcollider=machinescript.output.gameObject.GetComponent<Collider>();
+                machinecollider.enabled = false;
+                inputcollider*/
             }
 
         }
@@ -106,16 +112,18 @@ public class Raycast : MonoBehaviour
     }
     IEnumerator leftclickchecker(Machine machine)
     {
-        leftcheckcoroutine=true;
-        yield return new WaitWhile(()=>Input.GetMouseButton(0));
+        leftcheckcoroutine = true;
+        yield return new WaitWhile(() => Input.GetMouseButton(0));
         //machine.setting();
-        yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+        machinescript.colliderchenge(false);
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         Debug.Log(Input.GetMouseButton(0));
-        nowmoveing=false;
-        machine.nowmoveing=false;
-        machine=null;
-        movemachine=null;
-        machineobject=null;
-        leftcheckcoroutine=false;
+        machinescript.colliderchenge(true);
+        nowmoveing = false;
+        machine.nowmoveing = false;
+        machine = null;
+        movemachine = null;
+        machineobject = null;
+        leftcheckcoroutine = false;
     }
 }

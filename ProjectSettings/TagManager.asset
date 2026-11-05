@@ -8,6 +8,7 @@ TagManager:
   - block
   - blockholder
   - stocker
+  - Machine
   layers:
   - Default
   - TransparentFX

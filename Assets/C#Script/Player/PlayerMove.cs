@@ -143,7 +143,7 @@ public class PlayerMove : MonoBehaviour
     {
         ContactPoint contact = collision.contacts[0];
         float hity = contact.point.y;
-        if (collision.gameObject.tag == ("block") && hity > transform.position.y)
+        if ((collision.gameObject.tag == ("block") ||collision.gameObject.tag==("Machine"))&& hity > transform.position.y)
         {
             Grounded = true;
             //Debug.Log("grounded=true,block");
@@ -164,7 +164,7 @@ public class PlayerMove : MonoBehaviour
     void OnCollisionExit(Collision collision)
     {
         //Debug.Log("collisionexit");
-        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "block")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "block"||collision.gameObject.tag==("Machine"))
         {
             Grounded = false;
             //Debug.Log("grounded=false");
@@ -172,7 +172,7 @@ public class PlayerMove : MonoBehaviour
     }
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground"||collision.gameObject.tag==("Machine")||collision.gameObject.tag==("block"))
         {
             Grounded = true;
         }
