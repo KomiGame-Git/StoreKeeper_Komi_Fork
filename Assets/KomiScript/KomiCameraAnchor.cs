@@ -5,22 +5,24 @@ using UnityEngine;
 public class KomiCameraAnchor : MonoBehaviour
 {
     [Header("オブジェクト設定")]
-    [SerializeField]
-    GameObject cameraAnchor;
-    [SerializeField]
-    GameObject cameraPos;
-    [SerializeField]
-    GameObject target;
+    public GameObject cameraAnchor;
+    public GameObject cameraPos;
+    public GameObject target;
 
     [Header("カメラ設定")]
-    [SerializeField]
-    KomiCameraMode cameraMode;
+    public KomiCameraMode cameraMode;
     [SerializeField, Tooltip("一人称視点のカメラ位置")]
     Vector3 FirstPersonOffset;
     [SerializeField, Tooltip("三人称視点のカメラ位置")]
     Vector3 ThirdPersonOffset;
     [SerializeField, Tooltip("自由視点のカメラ位置")]
     Vector3 FreePersonOffset;
+
+    [Header("カメラ制限")]
+    [SerializeField, Tooltip("カメラの上下回転制限")]
+    float pitchLimit = 80f; // 上下回転の制限角度
+    [SerializeField, Tooltip("カメラの左右回転制限")]
+    float yawLimit = 360f; // 左右回転の制限角度
 
     Vector3 anchorOffset;
 
